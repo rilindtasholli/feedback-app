@@ -23,7 +23,7 @@ function FeedbackList() {
           >
             <FeedbackItem
               key={item.id}
-              feedbackItem={item}
+              item={item}
             />
           </motion.div>
         ))}
