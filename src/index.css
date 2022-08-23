@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+:root {
+  --primary: #2fa394;
+  --secondary: #5465af;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,7 +13,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #202142;
+  background-color: #17202e;
   color: #fff;
   line-height: 1.6;
 }
@@ -87,7 +92,7 @@ header {
 
 .rating li:hover,
 .num-display {
-  background: #ff6a95;
+  background: var(--primary);
   color: #fff;
 }
 
@@ -95,8 +100,8 @@ header {
   opacity: 0;
 }
 
-[type='radio']:checked ~ label {
-  background: #ff6a95;
+[type='radio']:checked~label {
+  background: var(--primary);
   color: #fff;
 }
 
@@ -104,7 +109,7 @@ header {
   display: flex;
   flex-direction: row;
   border: 1px solid #ccc;
-  padding: 8px 10px;
+  padding: 8px 15px 8px 20px;
   border-radius: 8px;
 }
 
@@ -153,19 +158,26 @@ input:focus {
   width: 100px;
   height: 40px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .btn-primary {
-  background-color: #202142;
+  background-color: var(--secondary);
 }
 
 .btn-secondary {
-  background: #ff6a95;
+  background: var(--primary);
 }
 
 .btn:hover {
-  transform: scale(0.98);
+  transform: scale(1.07);
   opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.905);
+  opacity: 0.9;
+  transition: 0;
 }
 
 .btn:disabled {
@@ -182,7 +194,7 @@ input:focus {
 .message {
   padding-top: 10px;
   text-align: center;
-  color: rebeccapurple;
+  color: rgb(102, 94, 136);
 }
 
 /* FIX: Remove position: absolute to keep about icon at the bottom of the
@@ -200,7 +212,7 @@ input:focus {
 }
 
 .about-link a:hover {
-  color: #ff6a95;
+  color: var(--primary);
 }
 
 .about h1 {

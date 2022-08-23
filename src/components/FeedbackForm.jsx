@@ -1,3 +1,4 @@
+import { FaCheck } from 'react-icons/fa'
 import { useState, useContext, useEffect, useInsertionEffect } from "react"
 import RatingSelect from "./RatingSelect"
 import Card from "./shared/Card"
@@ -72,7 +73,9 @@ function FeedbackForm() {
             placeholder="Write a review"
             value={text || ""}
           />
-          <Button type="submit" isDisabled={btnDisabled}>Send</Button>
+          <Button type="submit" isDisabled={btnDisabled}>
+            <FaCheck/>
+          </Button>
         </div>
 
         {message && <div className="message">{message}</div>}
