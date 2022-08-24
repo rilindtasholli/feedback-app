@@ -39,6 +39,11 @@ export const FeedbackProvider = ({children}) => {
     if (window.confirm('Are you sure you want to delete?')) {
       setFeedback(feedback.filter(item => item.id != id))
     }
+
+    setFeedbackEdit({
+      item: {},
+      edit: false
+    })
   }
 
   //Set feedbackItem to be updated
@@ -52,7 +57,10 @@ export const FeedbackProvider = ({children}) => {
   //Update Feedback
   const updateFeedback = (id, updatedItem) => {
     setFeedback(feedback.map((item) => (item.id === id) ? {...item, ...updatedItem} : item))
+  }
 
+  //Reset feedbackEdit
+  const cancelEdit = () => {
     setFeedbackEdit({
       item: {},
       edit: false
@@ -67,7 +75,8 @@ export const FeedbackProvider = ({children}) => {
         deleteFeedback, 
         addFeedback, 
         editFeedback,
-        updateFeedback
+        updateFeedback,
+        cancelEdit
       }}
     >
       {children}

@@ -123,6 +123,23 @@ input:focus {
   outline: none;
 }
 
+.edit-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.cancel-edit {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.85em;
+  color: #333;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
 .feedback-stats {
   color: #fff;
   display: flex;

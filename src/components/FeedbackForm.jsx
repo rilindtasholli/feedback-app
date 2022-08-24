@@ -1,4 +1,4 @@
-import { FaCheck } from 'react-icons/fa'
+import { FaCheck, FaTimes } from 'react-icons/fa'
 import { useState, useContext, useEffect, useInsertionEffect } from "react"
 import RatingSelect from "./RatingSelect"
 import Card from "./shared/Card"
@@ -11,14 +11,14 @@ function FeedbackForm() {
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState("")
 
-  const { addFeedback, feedbackEdit, updateFeedback } = useContext(FeedbackContext)
+  const { addFeedback, feedbackEdit, updateFeedback, cancelEdit } = useContext(FeedbackContext)
 
   useEffect(() => {
     if(feedbackEdit.edit == true){
       setBtnDisabled(false)
       setText(feedbackEdit.item.text)
       setRating(feedbackEdit.item.rating)
-      console.log(feedbackEdit)
+      setMessage(null)
     }
   }, [feedbackEdit])
 
@@ -30,7 +30,7 @@ function FeedbackForm() {
     if(text === ""){
       setBtnDisabled(true)
       setMessage(null)
-    }else if(text !== "" && text.trim().length < 10){
+    }else if(text !== "" && text.split(' ').join('').length < 10){
       setBtnDisabled(true)
       setMessage("Text must be at least 10 characters")
     }else{
@@ -53,9 +53,15 @@ function FeedbackForm() {
         addFeedback(newFeedBack)
       }
 
-      setText('')
-      setBtnDisabled(true)
+      resetForm()
     }
+  }
+
+  const resetForm = () => {
+    setText('')
+    setBtnDisabled(true)
+    setMessage(null)
+    cancelEdit()
   }
 
   return (
@@ -64,6 +70,14 @@ function FeedbackForm() {
         <h2>How would you rate our service with us?</h2>
         
         <RatingSelect setRating={setRating} selected={rating}/>
+
+        {feedbackEdit.edit && <div className='edit-group'>
+          <p>Edit Item: </p>
+          <button onClick={resetForm} className='cancel-edit'>
+            Cancel
+          </button>
+        </div>
+        }
 
         <div className="input-group">
           <input
