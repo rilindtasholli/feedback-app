@@ -7,7 +7,7 @@ import FeedbackContext from "../context/FeedbackContext"
 
 function FeedbackForm() {
   const [text, setText] = useState("")
-  const [rating, setRating] = useState("")
+  const [rating, setRating] = useState(8)
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState("")
 
@@ -63,7 +63,7 @@ function FeedbackForm() {
       <form onSubmit={handleSubmit}>
         <h2>How would you rate our service with us?</h2>
         
-        <RatingSelect select={(rating) => {setRating(rating)}}/>
+        <RatingSelect setRating={setRating} selected={rating}/>
 
         <div className="input-group">
           <input
